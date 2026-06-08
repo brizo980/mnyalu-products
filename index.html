@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MNYALU | Premium Cleaning Products</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="assets/mnyalu logo.jpeg" alt="MNYALU Logo" class="logo-img">
+            <div class="brand-text">
+                <h1>MNYALU</h1>
+                <p>Trusted Since 2019</p>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="login.html" class="admin-btn-link">Admin</a></li>
+        </ul>
+        <div class="cart-icon" onclick="toggleCart()" style="cursor: pointer;">
+            🛒 <span id="cart-count">0</span>
+        </div>
+    </nav>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+        <div id="cart-items-container" class="cart-body">
+            <p class="empty-msg">Your cart is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Total:</span>
+                <span id="cart-total-amount">0 Tsh</span>
+            </div>
+            <button class="checkout-btn" onclick="checkoutWhatsApp()">
+                Checkout via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Premium Cleaning Products</h1>
+            <p>Trusted since 2019. Quality products for a spotless clean home and beautiful skin.</p>
+            <button class="shop-now-btn" onclick="window.location.href='products.html'">
+                Shop Now &rarr;
+            </button>
+        </div>
+        <div class="hero-image-container">
+            <img src="assets/Screenshot_18-1-2026_152619_.jpeg" alt="Happy Family" class="hero-img">
+        </div>
+    </header>
+
+    <div class="features-bar">
+        <div class="feature-item"><span class="icon">🛡️</span> <div><strong>Quality Assured</strong><p>Tested formulations</p></div></div>
+        <div class="feature-item"><span class="icon">⚡</span> <div><strong>Fast Delivery</strong><p>Throughout Dar es Salaam</p></div></div>
+        <div class="feature-item"><span class="icon">🍃</span> <div><strong>Trusted Brand</strong><p>Thousands of customers</p></div></div>
+    </div>
+
+  <section class="featured-products section-padding">
+        <div class="container">
+            <h2 class="section-title">Our Best Sellers</h2>
+            <p class="section-subtitle">Discover our most popular products loved by thousands of customers</p>
+
+            <h3 class="category-heading">Personal Care</h3>
+            <div id="personal-care-grid" class="product-grid"></div>
+
+            <h3 class="category-heading" style="margin-top: 50px;">Household Cleaning</h3>
+            <div id="household-grid" class="product-grid"></div>
+
+            <div class="view-all-container">
+                <a href="products.html" class="view-all-btn">View All Products &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose MNYALU?</h2>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">⚡</div>
+                    <h3>Trusted Since 2019</h3>
+                    <p>Over 7 years of experience delivering quality products to thousands of satisfied customers.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🛡️</div>
+                    <h3>Quality Guaranteed</h3>
+                    <p>All our products undergo rigorous testing to ensure safety and effectiveness.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🚚</div>
+                    <h3>Fast Delivery</h3>
+                    <p>Quick and reliable delivery throughout Dar es Salaam and surrounding areas.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">💰</div>
+                    <h3>Great Value</h3>
+                    <p>Premium quality products at competitive prices that fit your budget.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="contact-details">
+                <h3>Get In Touch</h3>
+                <p><strong>📞 Phone:</strong> +255 754 362 180</p>
+                <p><strong>📍 Location:</strong> Kakiziba Street, Mbweni, Dar es Salaam</p>
+                <p><strong>📧 Email:</strong> info@mnyalu.co.tz</p>
+                <div class="social-icons">
+                    <span>Instagram</span> | <span>Facebook</span> | <span>WhatsApp</span>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send us a Message</h3>
+                <form id="info-form" onsubmit="handleContact(event)">
+                    <input type="text" id="cust-name" placeholder="Your Name" required>
+                    <input type="email" id="cust-email" placeholder="Your Gmail" required>
+                    <textarea id="cust-msg" placeholder="How can we help you today?" rows="4" required></textarea>
+                    <button type="submit" class="send-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2019-2026 MNYALU PRODUCTS. All rights reserved.</p>
+    </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | MNYALU</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="html" href="login.html">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body style="background-color: #f4f7fe;">
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="assets/mnyalu logo.jpeg" alt="Logo" class="logo-img">
+            <div>
+                <h1>Admin Dashboard</h1>
+                <p id="dash-timestamp">MNYALU PRODUCTS | Loading...</p>
+            </div>
+        </div>
+        <div class="nav-links">
+            <button class="refresh-btn" onclick="location.reload()">🔄 Refresh</button>
+            <button class="logout-btn" onclick="confirmLogout()">Logout</button>
+        </div>
+    </nav>
+
+    <div class="section-padding container">
+        <div class="stats-grid">
+            <div class="stat-card"><h3>1</h3><p>Total Orders</p></div>
+            <div class="stat-card"><h3>0</h3><p>Pending</p></div>
+            <div class="stat-card"><h3>1</h3><p>Confirmed</p></div>
+            <div class="stat-card"><h3 id="rev-display">25,000 Tsh</h3><p>Revenue</p></div>
+            <div class="stat-card"><h3 id="profit-display">13,000 Tsh</h3><p>Net Profit</p></div>
+        </div>
+
+        <div class="dashboard-card" style="margin-top: 30px;">
+            <div class="dashboard-header">
+                <h3>📈 Sales & Order Trends</h3>
+                <p style="font-size: 0.85rem; color: #666;">Real-time performance metrics</p>
+            </div>
+            <div class="chart-container" style="position: relative; height:300px; width:100%">
+                <canvas id="trendsChart"></canvas>
+            </div>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>📦 Products Inventory (14)</h3>
+            <div class="product-summary-grid">
+                <div class="prod-tag">Toilet Cleaner <small>1 variants</small></div>
+                <div class="prod-tag">Glass Cleaner <small>1 variants</small></div>
+                <div class="prod-tag">Hand Wash <small>1 variants</small></div>
+                <div class="prod-tag">Leave-in Conditioner <small>1 variants</small></div>
+                <div class="prod-tag">Shower Gel <small>1 variants</small></div>
+                <div class="prod-tag">Dish Wash <small>2 variants</small></div>
+                <div class="prod-tag">Disinfectant <small>2 variants</small></div>
+                <div class="prod-tag">Bleach <small>2 variants</small></div>
+                <div class="prod-tag">Shampoo <small>1 variants</small></div>
+                <div class="prod-tag">Body Lotion <small>3 variants</small></div>
+                <div class="prod-tag">Hair Steaming <small>1 variants</small></div>
+                <div class="prod-tag">Body Cream <small>3 variants</small></div>
+                <div class="prod-tag">Sanitizer <small>1 variants</small></div>
+                <div class="prod-tag">Multipurpose Cleaner <small>2 variants</small></div>
+            </div>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="orders-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3>🛒 Recent Orders</h3>
+                <select class="status-select"><option>All Orders</option></select>
+            </div>
+            
+            <div class="order-card confirmed" style="border-left: 5px solid #28a745; padding: 20px; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-radius: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="customer-info">
+                        <strong>Brian Haule</strong> <span class="status-badge" style="background:#dcfce7; color:#16a34a; padding:2px 8px; border-radius:4px; font-size: 0.8rem;">Confirmed</span>
+                        <p style="margin-top: 5px;">+254782774996 | Kajiado Namanga Rd</p>
+                        <p><small>📅 20 Jan 2026 • 1 items</small></p>
+                    </div>
+                    <div class="order-actions" style="text-align: right;">
+                        <strong class="price-red" style="color: var(--mnyalu-red); font-size: 1.2rem; display: block; margin-bottom: 10px;">25,000 Tsh</strong>
+                        <button class="details-btn" style="padding: 5px 12px; margin-right: 5px; cursor: pointer;">Details</button>
+                        <select class="status-select" style="padding: 5px;">
+                            <option>Confirmed</option>
+                            <option>Denied</option>
+                            <option>Pending</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

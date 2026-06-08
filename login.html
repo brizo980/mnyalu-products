@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | MNYALU</title>
+    <link rel="stylesheet" href="style.css">
+        <link rel="html" href="dashboard.html">
+
+</head>
+<body class="login-page-bg">
+
+    <div class="login-standalone-container">
+        <img src="assets/mnyalu logo.jpeg" alt="MNYALU Products Logo" class="login-logo-large">
+        
+        <h2>Admin Login</h2>
+        <p>Enter password to access dashboard</p>
+        
+        <div class="login-form-group">
+            <div class="input-wrapper">
+                <span class="lock-icon">🔒</span>
+                <input type="password" id="admin-pass" placeholder="••••••••">
+                <button class="view-toggle" onclick="togglePassword()">👁️</button>
+            </div>
+            
+            <button class="login-action-btn" onclick="checkLogin()">Login</button>
+        </div>
+       
+        <p class="reset-link" onclick="forgotPassword()">Forgot password? Reset via Gmail</p>
+        
+        <div class="back-link">
+            <a href="index.html">← Back to Shop</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

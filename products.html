@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | MNYALU</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="assets/mnyalu logo.jpeg" alt="MNYALU Logo" class="logo-img">
+            <div class="brand-text">
+                <h1>MNYALU</h1>
+                <p>Trusted Since 2019</p>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="login.html" class="admin-btn-link">Admin</a></li>
+        </ul>
+        <div class="cart-icon" onclick="toggleCart()" style="cursor: pointer;">
+            🛒 <span id="cart-count">0</span>
+        </div>
+    </nav>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+        <div id="cart-items-container" class="cart-body">
+            <p class="empty-msg">Your cart is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Total:</span>
+                <span id="cart-total-amount">0 Tsh</span>
+            </div>
+            <button class="checkout-btn" onclick="checkoutWhatsApp()">
+                Checkout via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <div class="products-page-header">
+        <div class="container">
+            <h1>Our Products</h1>
+            <p>Discover our complete range of premium cleaning & personal care products</p>
+            <div class="search-container">
+                <input type="text" id="product-search" placeholder="Search for products..." onkeyup="searchProducts()">
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="shop-container">
+        <aside class="sidebar">
+            <div class="filter-group">
+                <h3><span class="icon">🔍</span> Filter</h3>
+                <label class="filter-option">
+                    <input type="radio" name="category" value="All" checked onclick="filterProducts('All')">
+                    <span class="custom-radio"></span> All Products
+                </label>
+                <label class="filter-option">
+                    <input type="radio" name="category" value="Personal Care" onclick="filterProducts('Personal Care')">
+                    <span class="custom-radio"></span> Personal Care
+                </label>
+                <label class="filter-option">
+                    <input type="radio" name="category" value="Household Cleaning" onclick="filterProducts('Household Cleaning')">
+                    <span class="custom-radio"></span> Household Cleaning
+                </label>
+            </div>
+            <div class="help-box">
+                <p><strong>Need custom quantities?</strong> Call us at +255 754 362 180 for special orders.</p>
+            </div>
+        </aside>
+
+        <div class="shop-content">
+            <div class="products-header-row">
+                <h2 class="section-title">All Products</h2>
+                <p class="product-count" id="product-count">Showing all products</p>
+            </div>
+
+            <div id="product-grid" class="product-grid"></div>
+            <div id="no-results" class="no-results" style="display: none;">
+                <p>No products found matching your search.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="contact-details">
+                <h3>Get In Touch</h3>
+                <p><strong>📞 Phone:</strong> +255 754 362 180</p>
+                <p><strong>📍 Location:</strong> Kakiziba Street, Mbweni, Dar es Salaam</p>
+                <p><strong>📧 Email:</strong> info@mnyalu.co.tz</p>
+                <div class="social-icons">
+                    <span>Instagram</span> | <span>Facebook</span> | <span>WhatsApp</span>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send us a Message</h3>
+                <form id="info-form" onsubmit="handleContact(event)">
+                    <input type="text" id="cust-name" placeholder="Your Name" required>
+                    <input type="email" id="cust-email" placeholder="Your Gmail" required>
+                    <textarea id="cust-msg" placeholder="How can we help you today?" rows="4" required></textarea>
+                    <button type="submit" class="send-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2019-2026 MNYALU PRODUCTS. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize products page
+        window.onload = () => {
+            renderProducts();
+        };
+
+        function filterProducts(category) {
+            renderProducts(category);
+            // Also apply search if there's text in the search box
+            const searchTerm = document.getElementById('product-search').value;
+            if (searchTerm) {
+                searchProducts();
+            }
+        }
+
+        function searchProducts() {
+            const searchTerm = document.getElementById('product-search').value.toLowerCase();
+            const productCards = document.querySelectorAll('.product-card');
+            let visibleCount = 0;
+
+            productCards.forEach(card => {
+                const productName = card.querySelector('h3').textContent.toLowerCase();
+                const productDesc = card.querySelector('.desc').textContent.toLowerCase();
+
+                if (productName.includes(searchTerm) || productDesc.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Update count and show/hide no results message
+            const countElement = document.getElementById('product-count');
+            const noResults = document.getElementById('no-results');
+
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+                countElement.textContent = 'No products found';
+            } else {
+                noResults.style.display = 'none';
+                countElement.textContent = `Showing ${visibleCount} product${visibleCount !== 1 ? 's' : ''}`;
+            }
+        }
+    </script>
+</body>
+</html>
